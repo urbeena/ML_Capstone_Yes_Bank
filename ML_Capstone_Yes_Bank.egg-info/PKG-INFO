@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: ML_Capstone_Yes_Bank
+Version: 0.0.1
+Author: Urbeena rashid
+Author-email: 10urbeenarashid@gmail.com
+Requires-Dist: pandas
+Requires-Dist: numpy
