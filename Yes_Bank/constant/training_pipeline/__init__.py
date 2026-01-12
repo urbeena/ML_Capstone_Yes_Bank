@@ -1,10 +1,7 @@
-import os
 
-# name of the project
-PIPELINE_NAME = "YesBankPipeline"
+PIPELINE_NAME= 'YesBank'
+ARTIFACT_DIR= 'artifacts'
 
-# main folder where all outputs will be saved
-ARTIFACT_DIR = "artifacts"
 
 # dataset details
 DATA_FILE_NAME = "data_YesBank_StockPrices.csv"
@@ -14,14 +11,20 @@ DATA_DIR = "data"
 RAW_DATA_PATH= "raw_data.csv"
 TRAINING_PATH = "train.csv"
 TESTING_PATH = "test.csv"
-RAW_DATA_DIR = "raw_data"
-
 
 # data ingestion directry
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
-#DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
-DATA_INGESTION_INGESTED_DIR: str = "ingested"
 
-# preprocessing
-DATA_PREPROCESSING_DIR = "data_preprocessing"
-PROCESSED_DATA_DIR = "processed_data"
+
+
+#Data Transformation
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
+
+
+DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
+
+DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
+
+preprocessor_obj = 'preprocessor_obj.pkl'

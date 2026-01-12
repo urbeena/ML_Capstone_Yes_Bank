@@ -1,4 +1,0 @@
-[ 2026-01-07 15:32:49,259 ] 20 root - INFO - Logging has been configured.
-[ 2026-01-07 15:33:02,739 ] 22 root - INFO - Read the dataset as dataframe
-[ 2026-01-07 15:33:02,745 ] 25 root - INFO - Saved the raw data
-[ 2026-01-07 15:33:02,767 ] 16 root - INFO - Data Ingestion completed successfully

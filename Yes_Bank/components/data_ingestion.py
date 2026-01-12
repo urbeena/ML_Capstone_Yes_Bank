@@ -46,6 +46,7 @@ class DataIngestion:
             os.makedirs(dir_path,exist_ok=True)
 
             train_set.to_csv(self.data_ingestion_config.train_data_path,index=False,header=True)
+            logger.logging.info("Saved the train and test data into ingested folder")
 
             test_set.to_csv(self.data_ingestion_config.test_data_path,index=False,header=True)
 
@@ -65,6 +66,7 @@ class DataIngestion:
                train_path = self.data_ingestion_config.train_data_path,
                test_path= self.data_ingestion_config.test_data_path
            )
+           logger.logging.info(f"Data Ingestion artifact: {data_ingestion_artifact}")
 
            return data_ingestion_artifact
            
