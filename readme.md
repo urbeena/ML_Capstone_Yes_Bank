@@ -1,128 +1,225 @@
-# 📈 ML Capstone – Yes Bank Stock Price Prediction
+## 📈 ML Capstone – Yes Bank Stock Price Prediction
 
-This repository contains an **end-to-end Machine Learning pipeline** for predicting **Yes Bank stock prices** using historical data.  
-The project is designed following **industry-standard ML & MLOps practices**, including modular coding, configuration-driven pipelines, logging, exception handling, and artifact management.
+This project implements an **end-to-end Machine Learning pipeline** to predict **Yes Bank stock prices** using historical market data.
+It follows **industry-standard project structuring**, **modular design**, **logging**, **exception handling**, and **MLOps-ready pipelines**.
 
-Each pipeline stage is implemented **step-by-step**, with:
-- A config file
-- A config entity
-- A config artifact
+---
 
-This makes the project **scalable, maintainable, and production-ready**.
+## 🚀 Project Highlights
+
+* End-to-end ML lifecycle: ingestion → transformation → training → evaluation → deployment
+* Clean, modular, production-ready folder structure
+* Centralized logging & custom exception handling
+* YAML-based configuration management
+* Streamlit app for real-time predictions
 
 ---
 
 ## 📂 Project Structure
 
+```
 ML_Capstone_Yes_Bank/
 │
 ├── Yes_Bank/
-│ ├── components/ # Core ML pipeline components
-│ │ ├── data_ingestion.py
-│ │ ├── data_transformation.py
-│ │ ├── model_trainer.py
-│ │ ├── model_evaluation.py
-│ │ └── model_pusher.py
-│ │
-│ ├── config/ # Configuration files (YAML / constants)
-│ ├── entity/ # Config & artifact entities
-│ ├── exception/ # Custom exception handling
-│ ├── logging/ # Centralized logging configuration
-│ ├── pipeline/ # Training & prediction pipelines
-│ ├── utils/ # Utility functions
-│ └── init.py
+│   ├── components/
+│   ├── config/
+│   ├── entity/
+│   ├── exception/
+│   ├── logging/
+│   ├── pipeline/
+│   ├── utils/
+│   └── __init__.py
 │
-├── data/ # Raw dataset
-├── artifacts/ # Output artifacts of each pipeline stage
-├── logs/ # Auto-generated log files
-├── venv/ # Virtual environment (ignored in git)
-│
-├── main.py # Training pipeline execution
-├── app.py # Prediction / deployment entry point
+├── data/
+├── artifacts/
+├── logs/
+├── main.py
+├── app.py
 ├── requirements.txt
 ├── setup.py
 ├── .gitignore
 └── README.md
-
-yaml
-Copy code
+```
 
 ---
 
-## ⚙️ Environment Setup (Step-by-Step)
+## 📁 Folder-wise Documentation
 
-### 1️⃣ Create Virtual Environment
+---
+
+## 1️⃣ `Yes_Bank/components/`
+
+Contains the **core ML logic**, each module handling one stage of the pipeline.
+
+| File                     | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| `data_ingestion.py`      | Loads raw dataset and splits into train/test   |
+| `data_transformation.py` | Feature engineering, scaling, preprocessing    |
+| `model_trainer.py`       | Trains multiple ML models and selects best one |
+| `model_evaluation.py`    | Evaluates trained model using metrics          |
+| `model_pusher.py`        | Pushes the final model for deployment          |
+
+---
+
+## 2️⃣ `Yes_Bank/config/`
+
+Configuration-driven pipeline setup.
+
+| File           | Description                          |
+| -------------- | ------------------------------------ |
+| `config.yaml`  | Paths, parameters, thresholds        |
+| `constants.py` | Global constants used across project |
+
+---
+
+## 3️⃣ `Yes_Bank/entity/`
+
+Defines **dataclasses** for configuration and artifact tracking.
+
+| File                            | Description                       |
+| ------------------------------- | --------------------------------- |
+| `data_ingestion_entity.py`      | Ingestion config & artifacts      |
+| `data_transformation_entity.py` | Transformation config & artifacts |
+| `model_trainer_entity.py`       | Model training config             |
+| `model_evaluation_entity.py`    | Evaluation results                |
+
+✔️ Enables clean data flow between pipeline stages
+
+---
+
+## 4️⃣ `Yes_Bank/exception/`
+
+Centralized custom exception handling.
+
+| File           | Description                                  |
+| -------------- | -------------------------------------------- |
+| `exception.py` | CustomException class with traceback support |
+
+---
+
+## 5️⃣ `Yes_Bank/logging/`
+
+Project-wide logging setup.
+
+| File        | Description                             |
+| ----------- | --------------------------------------- |
+| `logger.py` | Logger configuration and log formatting |
+
+📌 Logs stored automatically in `/logs`
+
+---
+
+## 6️⃣ `Yes_Bank/pipeline/`
+
+Orchestrates ML workflows.
+
+| File                     | Description                       |
+| ------------------------ | --------------------------------- |
+| `training_pipeline.py`   | Runs full training pipeline       |
+| `prediction_pipeline.py` | Loads model and makes predictions |
+
+---
+
+## 7️⃣ `Yes_Bank/utils/`
+
+Helper functions and reusable logic.
+
+| File            | Description                         |
+| --------------- | ----------------------------------- |
+| `main_utils.py` | Common utility functions            |
+| `ml_utils.py`   | Prediction & model helper utilities |
+
+---
+
+## 8️⃣ `data/`
+
+Contains the raw dataset.
+
+| File           | Description                    |
+| -------------- | ------------------------------ |
+| `yes_bank.csv` | Historical Yes Bank stock data |
+
+---
+
+## 9️⃣ `artifacts/`
+
+Stores outputs from each pipeline stage.
+
+```
+artifacts/
+├── data_ingestion/
+├── data_transformation/
+├── model_trainer/
+└── model_evaluation/
+```
+
+✔️ Makes pipeline reproducible & debuggable
+
+---
+
+## 🔟 `logs/`
+
+Auto-generated logs for debugging & monitoring.
+
+---
+
+## 📌 Root Files
+
+| File               | Purpose                           |
+| ------------------ | --------------------------------- |
+| `main.py`          | Entry point for training pipeline |
+| `app.py`           | Streamlit app for prediction      |
+| `requirements.txt` | Project dependencies              |
+| `setup.py`         | Package setup for deployment      |
+| `.gitignore`       | Git ignored files                 |
+
+---
+
+## ▶️ How to Run the Project
+
+### 1️⃣ Install Dependencies
 
 ```bash
-conda create -p venv python=3.8 -y
-2️⃣ Activate the Environment
-bash
-Copy code
-conda activate venv/
-3️⃣ Install Project in Editable Mode
-bash
-Copy code
-pip install -e .
-🧠 Why pip install -e .?
-Installing the project in editable mode:
+pip install -r requirements.txt
+```
 
-Makes the project importable as a package
+### 2️⃣ Train the Model
 
-Prevents ModuleNotFoundError
+```bash
+python main.py
+```
 
-Automatically reflects code changes
+### 3️⃣ Run Prediction App
 
-Follows real-world ML/MLOps standards
+```bash
+streamlit run app.py
+```
 
-🔄 Machine Learning Pipeline – Step-by-Step Implementation
-✅ Step 1: Data Ingestion
-Loads raw Yes Bank stock data
+---
 
-Splits data into training and testing sets
+## 📊 ML Workflow
 
-Saves outputs as artifacts
+```
+Data Ingestion → Data Transformation → Model Training → Model Evaluation → Deployment
+```
 
-📁 Artifacts:
+---
 
-bash
-Copy code
-artifacts/data_ingestion/
-✔ Config file created
-✔ Config entity defined
-✔ Data ingestion artifact generated
+## 🛠️ Tech Stack
 
-✅ Step 2: Data Transformation
-Handles missing values
+* Python
+* Pandas, NumPy
+* Scikit-learn, XGBoost, CatBoost
+* Streamlit
+* Logging & Dataclasses
 
-Feature engineering
+---
 
-Scaling and preprocessing
+## ✨ Author
 
-Saves transformed data and preprocessing object
+**Urbeena Rashid**
+ML Capstone Project
 
-📁 Artifacts:
+---
 
-bash
-Copy code
-artifacts/data_transformation/
-✔ Config updated
-✔ Transformation entity created
-✔ Transformation artifacts generated
-
-✅ Step 3: Model Trainer
-Trains multiple regression models
-
-Evaluates model performance
-
-Selects the best-performing model
-
-Saves trained model object
-
-📁 Artifacts:
-
-bash
-Copy code
-artifacts/model_trainer/
-✔ Model trainer config implemented
-✔ Model trainer entity created
-✔ Trained model artifact saved
+⭐ If you like this project, don’t forget to star the repository!
