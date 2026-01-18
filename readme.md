@@ -56,8 +56,8 @@ Contains the **core ML logic**, each module handling one stage of the pipeline.
 | `data_ingestion.py`      | Loads raw dataset and splits into train/test   |
 | `data_transformation.py` | Feature engineering, scaling, preprocessing    |
 | `model_trainer.py`       | Trains multiple ML models and selects best one |
-| `model_evaluation.py`    | Evaluates trained model using metrics          |
-| `model_pusher.py`        | Pushes the final model for deployment          |
+|                          | Evaluates trained model using metrics          |
+|                          | Pushes the final model for deployment          |
 
 ---
 
@@ -65,10 +65,7 @@ Contains the **core ML logic**, each module handling one stage of the pipeline.
 
 Configuration-driven pipeline setup.
 
-| File           | Description                          |
-| -------------- | ------------------------------------ |
-| `config.yaml`  | Paths, parameters, thresholds        |
-| `constants.py` | Global constants used across project |
+
 
 ---
 
@@ -81,7 +78,7 @@ Defines **dataclasses** for configuration and artifact tracking.
 | `data_ingestion_entity.py`      | Ingestion config & artifacts      |
 | `data_transformation_entity.py` | Transformation config & artifacts |
 | `model_trainer_entity.py`       | Model training config             |
-| `model_evaluation_entity.py`    | Evaluation results                |
+|                                 | Evaluation results                |
 
 ✔️ Enables clean data flow between pipeline stages
 
@@ -180,8 +177,30 @@ Auto-generated logs for debugging & monitoring.
 ### 1️⃣ Install Dependencies
 
 ```bash
+ENVIRONMENT SETUP (ALREADY IMPLEMENTED)
+
+Step 1: Create virtual environment
+
+conda create -p venv python=3.8 -y
+
+Step 2: Activate virtual environment
+
+conda activate venv/
+
+Step 3: Install dependencies
+
 pip install -r requirements.txt
-```
+
+Step 4: Install project in editable mode
+
+pip install -e .
+
+Why pip install -e . ?
+
+• Makes the project importable as a package
+• Prevents ModuleNotFoundError
+• Automatically reflects code changes
+• Follows real-world ML/MLOps standards```
 
 ### 2️⃣ Train the Model
 
@@ -203,17 +222,7 @@ streamlit run app.py
 Data Ingestion → Data Transformation → Model Training → Model Evaluation → Deployment
 ```
 
----
 
-## 🛠️ Tech Stack
-
-* Python
-* Pandas, NumPy
-* Scikit-learn, XGBoost, CatBoost
-* Streamlit
-* Logging & Dataclasses
-
----
 
 ## ✨ Author
 
