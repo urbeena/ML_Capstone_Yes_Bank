@@ -17,6 +17,7 @@ from Yes_Bank.utils.main_utils.utils import save_object, save_numpy_array_data
 
 
 class DataTransformation:
+    
     def __init__(
         self,
         data_ingestion_artifact: DataIngestionArtifact,
@@ -49,7 +50,7 @@ class DataTransformation:
                 df["Year"] = df["Date"].dt.year
                 df.drop(columns=["Date"], inplace=True)
 
-                logger.logging.info("Converted Date column to Month and Year")
+                logger.logging.info(f"Converted Date column to Month and Year{df['Year'].unique().tolist()}")
 
             return df
 
@@ -105,6 +106,7 @@ class DataTransformation:
                 self.data_transformation_config.transformed_train_path,
                 train_arr,
             )
+            
             save_numpy_array_data(
                 self.data_transformation_config.transformed_test_path,
                 test_arr,
@@ -112,6 +114,10 @@ class DataTransformation:
 
             save_object(
                 self.data_transformation_config.transformed_object_path,
+                processor,
+            )
+
+            save_object( "final_model/preprocessor.pkl", 
                 processor,
             )
 
@@ -127,3 +133,6 @@ class DataTransformation:
 
         except Exception as e:
             raise YesBankException(e, sys)
+
+
+

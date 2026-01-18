@@ -4,9 +4,13 @@ import sys
 from Yes_Bank.entity.config_entity import TrainingPipelineConfig
 from Yes_Bank.entity.config_entity import DataIngestionConfig
 from Yes_Bank.components.data_ingestion import DataIngestion
+
 from Yes_Bank.entity.artifact_entity import DataIngestionArtifact
 from Yes_Bank.entity.config_entity import DataTransformationConfig
 from Yes_Bank.components.data_transformation import DataTransformation
+
+from Yes_Bank.entity.config_entity import ModelTrainerConfig
+from Yes_Bank.components.model_train import ModelTrainer
 
 if __name__ == "__main__":
     try:
@@ -22,8 +26,14 @@ if __name__ == "__main__":
 
         data_transformation = DataTransformation(dataingestionartifact, data_transformation_config)
 
-        data_transformation.initiate_data_transformation()
+        DataTransformationArtifact=data_transformation.initiate_data_transformation()
         logger.logging.info("Data Transformation completed successfully")
+
+        # Model Trainer
+        model_trainer_config= ModelTrainerConfig(training_pipeline_config)
+        model_trainer=ModelTrainer(model_trainer_config,DataTransformationArtifact)
+        model_trainer_artifact= model_trainer.initiate_model_trainer()
+        logger.logging.info("Model Training completed successfully")
 
 
         

@@ -1,7 +1,14 @@
-# ML Capstone – Yes Bank Stock Price Prediction 📈
+# 📈 ML Capstone – Yes Bank Stock Price Prediction
 
-This repository contains the initial setup and project structure for the **Yes Bank Stock Price Prediction** machine learning capstone project.  
-The project follows **industry-standard Python packaging, logging, and exception handling practices**.
+This repository contains an **end-to-end Machine Learning pipeline** for predicting **Yes Bank stock prices** using historical data.  
+The project is designed following **industry-standard ML & MLOps practices**, including modular coding, configuration-driven pipelines, logging, exception handling, and artifact management.
+
+Each pipeline stage is implemented **step-by-step**, with:
+- A config file
+- A config entity
+- A config artifact
+
+This makes the project **scalable, maintainable, and production-ready**.
 
 ---
 
@@ -10,71 +17,112 @@ The project follows **industry-standard Python packaging, logging, and exception
 ML_Capstone_Yes_Bank/
 │
 ├── Yes_Bank/
-│   ├── exception/        # Custom exception handling
-│   ├── logging/          # Centralized logging configuration
-│   ├── __init__.py
+│ ├── components/ # Core ML pipeline components
+│ │ ├── data_ingestion.py
+│ │ ├── data_transformation.py
+│ │ ├── model_trainer.py
+│ │ ├── model_evaluation.py
+│ │ └── model_pusher.py
+│ │
+│ ├── config/ # Configuration files (YAML / constants)
+│ ├── entity/ # Config & artifact entities
+│ ├── exception/ # Custom exception handling
+│ ├── logging/ # Centralized logging configuration
+│ ├── pipeline/ # Training & prediction pipelines
+│ ├── utils/ # Utility functions
+│ └── init.py
 │
-├── data/                 # Dataset directory
-├── logs/                 # Auto-generated log files
-├── venv/                 # Virtual environment (ignored in git)
+├── data/ # Raw dataset
+├── artifacts/ # Output artifacts of each pipeline stage
+├── logs/ # Auto-generated log files
+├── venv/ # Virtual environment (ignored in git)
 │
-├── data_loader.py        # Data loading logic
-├── requirements.txt      # Project dependencies
-├── setup.py              # Package configuration
+├── main.py # Training pipeline execution
+├── app.py # Prediction / deployment entry point
+├── requirements.txt
+├── setup.py
 ├── .gitignore
-└── readme.md
+└── README.md
+
+yaml
+Copy code
 
 ---
 
-## ⚙️ Environment Setup
+## ⚙️ Environment Setup (Step-by-Step)
 
 ### 1️⃣ Create Virtual Environment
 
-conda create -p venv python==3.8 -y
-
----
-
-### 2️⃣ Activate the Environment
-
+```bash
+conda create -p venv python=3.8 -y
+2️⃣ Activate the Environment
+bash
+Copy code
 conda activate venv/
-
----
-
-### 3️⃣ Install Project in Editable Mode
-
+3️⃣ Install Project in Editable Mode
+bash
+Copy code
 pip install -e .
-
----
-
-## 🧠 Why `pip install -e .`?
-
+🧠 Why pip install -e .?
 Installing the project in editable mode:
-- Makes the project importable as a package
-- Avoids module import errors
-- Reflects code changes instantly
-- Follows real-world ML/MLOps standards
 
----
+Makes the project importable as a package
 
-## 🚧 Current Status
+Prevents ModuleNotFoundError
 
-✔ Project structure implemented  
-✔ Logging system configured  
-✔ Custom exception handling added  
-✔ Package installation enabled  
+Automatically reflects code changes
 
+Follows real-world ML/MLOps standards
 
+🔄 Machine Learning Pipeline – Step-by-Step Implementation
+✅ Step 1: Data Ingestion
+Loads raw Yes Bank stock data
 
----
+Splits data into training and testing sets
 
-## 👩‍💻 Author
+Saves outputs as artifacts
 
-Urbeena Rashid  
-Machine Learning & Data Science Enthusiast  
+📁 Artifacts:
 
----
+bash
+Copy code
+artifacts/data_ingestion/
+✔ Config file created
+✔ Config entity defined
+✔ Data ingestion artifact generated
 
-⚠️ Note:  
-The virtual environment (`venv/`) is excluded from version control.  
-Always recreate the environment using the steps above.
+✅ Step 2: Data Transformation
+Handles missing values
 
+Feature engineering
+
+Scaling and preprocessing
+
+Saves transformed data and preprocessing object
+
+📁 Artifacts:
+
+bash
+Copy code
+artifacts/data_transformation/
+✔ Config updated
+✔ Transformation entity created
+✔ Transformation artifacts generated
+
+✅ Step 3: Model Trainer
+Trains multiple regression models
+
+Evaluates model performance
+
+Selects the best-performing model
+
+Saves trained model object
+
+📁 Artifacts:
+
+bash
+Copy code
+artifacts/model_trainer/
+✔ Model trainer config implemented
+✔ Model trainer entity created
+✔ Trained model artifact saved
