@@ -12,7 +12,7 @@ class DataIngestionConfig:
             training_pipeline_config.artifact_dir,
             training_pipeline.DATA_INGESTION_DIR_NAME,
             training_pipeline.RAW_DATA_PATH
-        )
+        )#artifact/data_ingestion/rawdata.csv
         
         self.train_data_path = os.path.join(
             training_pipeline_config.artifact_dir,
